@@ -4,6 +4,9 @@
 # clear the screen
 clear
 
+# draw greeting
+echo 
+
 # build knowledge base
 declare -a kb
 kb=(`cat "KnowBase.txt"`)
@@ -17,7 +20,7 @@ read -p  "What is the symptom you would like to explore? " symptom
 # check symptom is in knowledge base
 if [[ " ${kb[*]} " == " $symptom " ]]; then
 	echo $symptom "is in my Knowledge Base. Let us begin."
-	
+	source bradycardia.sh	
 else
 	echo "These are the symptoms I have in my Knowledge Base:"
 
