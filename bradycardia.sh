@@ -25,6 +25,30 @@ if [[ $p1a =~ [Nn] ]]; then
 	fi
 elif [[ $p1a =~ [Yy] ]]; then
 	echo "So the bradycardia is probably not physiologic, and we need to rule out Pathologic and Pharmacologic causes."
+	read -p "Is the patient on any of the following drugs: Diltiazem, Verapamil, Beta-blockers,  Digoxin, Amiodarone, Propafenone, Quinidine, Procainamide, or Disopyramide? [y/n]" p2a
+	if [[ $p2a =~ [Yy] ]]; then
+		echo "Which one? Type it out exactly as I listed above"
+		read drug
+		case $drug in
+			Diltiazem|Verapamil)
+			echo "AV node conduction is slowed down by Diltiazem and Verapamil."
+			;;
+			Beta-blockers)
+			echo "AV node is blocked and there is withdrawal of sympathetic tone"
+			;;
+			Digoxin)
+			echo "Vagal tone is increased."
+			;;
+			Amiodarone|Propafenone)
+			echo "Calcium channel blockade is causing the AV node conduction to slow down."
+			;;
+			Quinidine|Procainamide|Disopyramide)
+			echo "These drugs affect the sodium channels and are slowing down the infranodal conducting system."
+			;;
+		esac
+	else
+		echo "Let us explore pathologic causes, then."
+	fi
 else
 	echo "Yes or No answers only, please!"
 fi
